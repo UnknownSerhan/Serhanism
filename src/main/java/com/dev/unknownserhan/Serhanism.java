@@ -1,5 +1,6 @@
 package com.dev.unknownserhan;
 
+import net.minecraft.world.level.block.SoundType;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -58,14 +59,14 @@ public class Serhanism
     public static final DeferredItem<Item> NUTELLA = ITEMS.registerSimpleItem("nutella", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    public static final DeferredBlock<Block> WESH_BLOCK = BLOCKS.registerSimpleBlock("wesh_block", BlockBehaviour.Properties.of().air());
+    public static final DeferredBlock<Block> WESH_BLOCK = BLOCKS.registerSimpleBlock("wesh_block", BlockBehaviour.Properties.of().strength(30, 1000).sound(SoundType.AMETHYST));
     public static final DeferredItem<BlockItem> WESH_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("wesh_block", WESH_BLOCK);
 
     // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("serhanism", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SERHANISM_TAB = CREATIVE_MODE_TABS.register("serhanism", () -> CreativeModeTab.builder()
             .title(Component.translatable("Serhanism")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> NUTELLA.get().getDefaultInstance())
+            .icon(() -> WESH_BLOCK_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(NUTELLA.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
@@ -113,7 +114,7 @@ public class Serhanism
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-            event.accept(SERHAN_BLOCK_ITEM);
+            event.accept(WESH_BLOCK_ITEM);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
