@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "block",
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "I": {
+      "tag": "c:ingots"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SIS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "id": "serhanism:wesh_block"
+  }
+}
